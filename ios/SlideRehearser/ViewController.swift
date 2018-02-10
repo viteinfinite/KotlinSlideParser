@@ -12,13 +12,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        experimentSupport()
         loadPages()
     }
 
     private func loadPages() {
         let deck = Deck()
         let parser = KSPSlideParser()
-        guard let pages = parser.parsePages(string: deck.contents) as? [KSPSlideEntityPage] else { return }
+        guard let pages = parser.parsePages(string: deck.contents) else { return }
         dataSource = SlideDataSource(pages: pages)
     }
 
@@ -27,6 +28,10 @@ class ViewController: UIViewController {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = collectionView.frame.size
         }
+    }
+    
+    private func experimentSupport() {
+        KSPSupport().logSomething()
     }
 }
 

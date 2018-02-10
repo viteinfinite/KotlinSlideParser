@@ -1,7 +1,11 @@
 package fr.xebia.slideparser
 
-open class Support {
-	public fun osName(): String {
-		return "ios"
-	}
+class Support {
+    fun optionalInt(): Int? {
+        return null
+    }
+
+    fun somethingThatThrows() {
+        throw Exception(message = "Oops.")
+    }
 }

@@ -5,11 +5,7 @@ class SlideCell: UICollectionViewCell {
     @IBOutlet private weak var label: UILabel!
 
     func configure(with page: KSPSlideEntityPage) {
-        guard let contents = page.contents as? [KSPMarkdownEntity] else {
-            label.attributedText = NSAttributedString()
-            return
-        }
-        label.attributedText = render(contents)
+        label.attributedText = render(page.contents)
     }
 }
 
@@ -85,27 +81,27 @@ extension SlideCell {
             switch entity {
             case let bold as KSPMarkdownEntityBold:
                 let style = Styles.bold(base: style)
-                let subAttrString = render(bold.contents as! [KSPMarkdownEntity], style: style)
+                let subAttrString = render(bold.contents, style: style)
                 attributedString.append(subAttrString)
 
             case let italic as KSPMarkdownEntityItalic:
                 let style = Styles.italic(base: style)
-                let subAttrString = render(italic.contents as! [KSPMarkdownEntity], style: style)
+                let subAttrString = render(italic.contents, style: style)
                 attributedString.append(subAttrString)
 
             case let header as KSPMarkdownEntityHeader:
                 let style = Styles.header(base: style, level: Int(header.level))
-                let subAttrString = render(header.contents as! [KSPMarkdownEntity], style: style)
+                let subAttrString = render(header.contents, style: style)
                 attributedString.append(subAttrString)
 
             case let inline as KSPMarkdownEntityInlineCode:
                 let style = Styles.inlineCode(base: style)
-                let subAttrString = render(inline.contents as! [KSPMarkdownEntity], style: style)
+                let subAttrString = render(inline.contents, style: style)
                 attributedString.append(subAttrString)
 
             case let links as KSPMarkdownEntityLinks:
                 let style = Styles.inlineCode(base: style)
-                let subAttrString = render(links.contents as! [KSPMarkdownEntity], style: style)
+                let subAttrString = render(links.contents, style: style)
                 attributedString.append(subAttrString)
 
             case let plain as KSPMarkdownEntityPlain:
