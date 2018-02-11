@@ -7,4 +7,9 @@
 /android/.idea/libraries
 /build
 /captures
-/ios/xcuserdata
+/common/build
+/ios/DerivedData
+/ios/Frameworks/konan
+/ios/SlideRehearser.xcodeproj/project.xcworkspace/xcuserdata
+/ios/SlideRehearser.xcodeproj/xcuserdata
+/common/slideparser/build
