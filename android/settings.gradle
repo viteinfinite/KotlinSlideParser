@@ -1,1 +1,1 @@
-include ':app', ':slideparser-debug'
+include ':app', ':slideparser'
