@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     private func loadPages() {
         let deck = Deck()
         let parser = KSPSlideParser()
-        guard let pages = parser.parsePages(string: deck.contents) as? [KSPSlideEntityPage] else { return }
+        guard let pages = parser.parsePages(string: deck.contents) else { return }
         dataSource = SlideDataSource(pages: pages)
     }
 

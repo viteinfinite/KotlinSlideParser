@@ -16,11 +16,10 @@ public sealed class MarkdownEntity {
     data class Delete(val contents: List<MarkdownEntity>): MarkdownEntity()
 }
 
-
 public class SlideParser {
     internal val reserved = "`*#[(~"
 
-   private fun slide(): Parser<SlideEntity> =
+   private fun slide(): Parser<SlideEntity.Page> =
            newPage()
 
     private fun markdown(): Parser<MarkdownEntity> =
@@ -44,14 +43,14 @@ public class SlideParser {
         return Parser { mm.process(it) }
     }
 
-    internal fun trimmedSlides(): Parser<List<SlideEntity>> {
+    internal fun trimmedSlides(): Parser<List<SlideEntity.Page>> {
         val m = space(false).concat { this.slide() }
         val mm = many1loop(m)
         return Parser { mm.process(it) }
     }
 
     private fun markdownParser(): Parser<List<MarkdownEntity>> = trimmedMarkdowns()
-    private fun pageParser(): Parser<List<SlideEntity>> = trimmedSlides()
+    private fun pageParser(): Parser<List<SlideEntity.Page>> = trimmedSlides()
 
     public fun parse(string: String): List<MarkdownEntity>? {
         val result = this.markdownParser().process(string)
@@ -62,7 +61,7 @@ public class SlideParser {
         }
     }
 
-    public fun parsePages(string: String): List<SlideEntity>? {
+    public fun parsePages(string: String): List<SlideEntity.Page>? {
         val result = this.pageParser().process(string)
         return if (result.isEmpty()) {
             null
@@ -75,11 +74,11 @@ public class SlideParser {
 // Entities
 
 // TODO: Newlines
-private fun SlideParser.newPage(): Parser<SlideEntity> =
+private fun SlideParser.newPage(): Parser<SlideEntity.Page> =
         symbol("---").concat {
             until("---", terminator = null).concat {
                 val tmds = this.pureStringParse(it)
-                pure(SlideEntity.Page(tmds) as SlideEntity)
+                pure(SlideEntity.Page(tmds))
             }
         }
 
