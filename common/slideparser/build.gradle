@@ -42,18 +42,10 @@ dependencies {
     compile 'org.testng:testng:6.9.6'
 }
 
-konan.targets = ['iphone', 'iphone_sim']
-
 konanArtifacts {
-    framework('KotlinSlideParser') {
+    framework('KotlinSlideParser', targets: ['iphone', 'iphone_sim']) {
         srcDir 'src/main/kotlin'
-        target('iphone') {
-            srcDir 'src/ios/kotlin'
-        }
-
-        target('iphone_sim') {
-            srcDir 'src/ios/kotlin'
-        }
+        srcDir 'src/ios/kotlin'
 
         enableDebug true
     }
