@@ -4,7 +4,7 @@ public sealed class SlideEntity {
     data class Page(val contents: List<MarkdownEntity>): SlideEntity()
 }
 
-expect class Logger {
+expect class Logger() {
     fun log(tag: String?, message: String)
 }
 
@@ -21,9 +21,10 @@ public sealed class MarkdownEntity {
 }
 
 public class SlideParser {
+    private val logger = Logger()
     internal val reserved = "`*#[(~"
 
-   private fun slide(): Parser<SlideEntity.Page> =
+    private fun slide(): Parser<SlideEntity.Page> =
            newPage()
 
     private fun markdown(): Parser<MarkdownEntity> =
@@ -59,6 +60,7 @@ public class SlideParser {
     public fun parse(string: String): List<MarkdownEntity>? {
         val result = this.markdownParser().process(string)
         return if (result.isEmpty()) {
+            logger.log("SlideParser", "Cannot parse Markdown")
             null
         } else {
             result[0].first
@@ -68,6 +70,7 @@ public class SlideParser {
     public fun parsePages(string: String): List<SlideEntity.Page>? {
         val result = this.pageParser().process(string)
         return if (result.isEmpty()) {
+            logger.log("SlideParser", "Cannot parse Markdown pages")
             null
         } else {
             result[0].first
