@@ -1,1 +1,1 @@
-include ':slideparser'
+include ':slideparser', ':slideparser-ios', ':slideparser-android'

@@ -12,20 +12,20 @@
 		421E25661FFC3C0900AA69DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 421E25641FFC3C0900AA69DE /* Main.storyboard */; };
 		421E25681FFC3C0900AA69DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421E25671FFC3C0900AA69DE /* Assets.xcassets */; };
 		421E256B1FFC3C0900AA69DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 421E25691FFC3C0900AA69DE /* LaunchScreen.storyboard */; };
+		4273C86920376702005FEAC7 /* KotlinSlideParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4273C8672037657F005FEAC7 /* KotlinSlideParser.framework */; };
+		4273C86A20376702005FEAC7 /* KotlinSlideParser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4273C8672037657F005FEAC7 /* KotlinSlideParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		429B318A201FEB1A00BCC513 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B3189201FEB1A00BCC513 /* Deck.swift */; };
 		429B318F201FF3D200BCC513 /* SlideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B318E201FF3D200BCC513 /* SlideCell.swift */; };
-		42E44473200D80DF0080E671 /* KotlinSlideParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E44472200D80DF0080E671 /* KotlinSlideParser.framework */; };
-		42E44474200D80DF0080E671 /* KotlinSlideParser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42E44472200D80DF0080E671 /* KotlinSlideParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		42E44475200D80DF0080E671 /* Embed Frameworks */ = {
+		4273C86620376523005FEAC7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				42E44474200D80DF0080E671 /* KotlinSlideParser.framework in Embed Frameworks */,
+				4273C86A20376702005FEAC7 /* KotlinSlideParser.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,9 +41,9 @@
 		421E256A1FFC3C0900AA69DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		421E256C1FFC3C0900AA69DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4241EF5820079A3400589E68 /* SlideParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideParser.framework; path = Frameworks/konan/SlideParser.framework; sourceTree = "<group>"; };
+		4273C8672037657F005FEAC7 /* KotlinSlideParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KotlinSlideParser.framework; path = Frameworks/konan/KotlinSlideParser.framework; sourceTree = "<group>"; };
 		429B3189201FEB1A00BCC513 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		429B318E201FF3D200BCC513 /* SlideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCell.swift; sourceTree = "<group>"; };
-		42E44472200D80DF0080E671 /* KotlinSlideParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KotlinSlideParser.framework; path = ../common/slideparser/build/konan/bin/iphone_sim/KotlinSlideParser.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E44473200D80DF0080E671 /* KotlinSlideParser.framework in Frameworks */,
+				4273C86920376702005FEAC7 /* KotlinSlideParser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 		421E25541FFC3C0900AA69DE = {
 			isa = PBXGroup;
 			children = (
-				42E44472200D80DF0080E671 /* KotlinSlideParser.framework */,
+				4273C8672037657F005FEAC7 /* KotlinSlideParser.framework */,
 				421E255F1FFC3C0900AA69DE /* SlideRehearser */,
 				421E255E1FFC3C0900AA69DE /* Products */,
 				4241EF5720079A3400589E68 /* Frameworks */,
@@ -110,7 +110,7 @@
 				421E25591FFC3C0900AA69DE /* Sources */,
 				421E255A1FFC3C0900AA69DE /* Frameworks */,
 				421E255B1FFC3C0900AA69DE /* Resources */,
-				42E44475200D80DF0080E671 /* Embed Frameworks */,
+				4273C86620376523005FEAC7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,7 +181,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "case \"$PLATFORM_NAME\" in\n    iphoneos)\n        TARGET=iphone\n        TASK=compileKonanKotlinSlideParserIphone\n        ;;\n    iphonesimulator)\n        TARGET=iphone_sim\n        TASK=compileKonanKotlinSlideParserIphone_sim\n        ;;\n    *)\n        echo \"Unknown platform: $PLATFORM_NAME\"\n        exit 1\n        ;;\nesac\n\nFRAMEWORKS_DIR=\"$SRCROOT/Frameworks/konan/\"\nrm -rf \"$FRAMEWORKS_DIR\"\nmkdir -p \"$FRAMEWORKS_DIR\"\nln -s \"$SRCROOT/../common/slideparser/build/konan/bin/$TARGET/KotlinSlideParser.framework\" \"$FRAMEWORKS_DIR/KotlinSlideParser.framework\"\n\n\"$SRCROOT/../common/gradlew\" -p \"$SRCROOT/../common/slideparser\" \"$TASK\"";
+			shellScript = "case \"$PLATFORM_NAME\" in\n    iphoneos)\n        TARGET=iphone\n        TASK=compileKonanKotlinSlideParserIphone\n        ;;\n    iphonesimulator)\n        TARGET=iphone_sim\n        TASK=compileKonanKotlinSlideParserIphone_sim\n        ;;\n    *)\n        echo \"Unknown platform: $PLATFORM_NAME\"\n        exit 1\n        ;;\nesac\n\nFRAMEWORKS_DIR=\"$SRCROOT/Frameworks/konan/\"\nrm -rf \"$FRAMEWORKS_DIR\"\nmkdir -p \"$FRAMEWORKS_DIR\"\nln -s \"$SRCROOT/../common/slideparser-ios/build/konan/bin/$TARGET/KotlinSlideParser.framework\" \"$FRAMEWORKS_DIR/KotlinSlideParser.framework\"\n\n\"$SRCROOT/../common/gradlew\" -p \"$SRCROOT/../common/slideparser-ios\" \"$TASK\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

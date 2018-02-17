@@ -1,16 +1,5 @@
 package fr.xebia.slideparser
 
-enum class MyEnum {
-    A,
-    B,
-    C
-}
-
-enum class OtherEnum(val value: Int, val toto: String) {
-    A(value = 1, toto = "1"),
-    B(value = 2, toto = "2")
-}
-
 internal data class Parser<T>(val process: (String) -> List<Pair<T, String>>) {
     operator fun plus(increment: Parser<T>): Parser<T> {
         return Parser {

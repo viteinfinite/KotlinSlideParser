@@ -4,6 +4,10 @@ public sealed class SlideEntity {
     data class Page(val contents: List<MarkdownEntity>): SlideEntity()
 }
 
+expect class Logger {
+    fun log(tag: String?, message: String)
+}
+
 public sealed class MarkdownEntity {
     data class Italic(val contents: List<MarkdownEntity>): MarkdownEntity()
     data class Bold(val contents: List<MarkdownEntity>): MarkdownEntity()

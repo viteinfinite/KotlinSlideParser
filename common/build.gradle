@@ -1,26 +1,10 @@
-subprojects {
+allprojects {
     buildscript {
-        ext.kotlin_version = '1.2.21'
+        ext.kotlin_version = '1.2.30-eap-47'
 
         repositories {
-            mavenCentral()
-            maven {
-                url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
-            }
-            google()
+            maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
             jcenter()
         }
-
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.0.1'
-            classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:+"
-        }
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
     }
 }

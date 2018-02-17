@@ -4,49 +4,12 @@ buildscript {
     }
 }
 
-apply plugin: 'konan'
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.platform.common'
 
-android {
-    compileSdkVersion 26
-
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        main.java.srcDirs += 'src/android/kotlin'
-
-        main.java.srcDirs += 'src/test/kotlin'
-    }
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
 }
 
 repositories {
-    mavenCentral()
-}
-
-dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-
-    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
-    compile 'org.testng:testng:6.9.6'
-}
-
-konanArtifacts {
-    framework('KotlinSlideParser', targets: ['iphone', 'iphone_sim']) {
-        srcDir 'src/main/kotlin'
-        srcDir 'src/ios/kotlin'
-
-        enableDebug true
-    }
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
 }

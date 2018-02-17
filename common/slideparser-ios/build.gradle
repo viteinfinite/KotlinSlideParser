@@ -1,0 +1,25 @@
+apply plugin: 'konan'
+
+buildscript {
+	repositories {
+		maven {
+        	url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
+        }
+	}
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:+"
+    }
+}
+
+konanArtifacts {
+    framework('KotlinSlideParser', targets: ['iphone', 'iphone_sim']) {
+        srcDir 'src/main/kotlin'
+
+        enableMultiplatform true
+        enableDebug true
+    }
+}
+
+dependencies {
+    expectedBy project(':slideparser')
+}
